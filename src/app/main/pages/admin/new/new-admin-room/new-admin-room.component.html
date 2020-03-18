@@ -1,0 +1,49 @@
+<app-admin-header></app-admin-header>
+<div class="container mt-5">
+    <h1 class="display-4">Nueva Sala <button type="button" [routerLink]="['/admin/rooms']" class="btn btn-warning">Atras</button></h1>
+    <hr>
+
+    <div class="alert alert-warning" role="alert" *ngIf="error">
+        <h3>Todos los campos son obligatorios</h3>
+    </div>
+    <form (ngSubmit)="guardar(newRooms)" #newRooms="ngForm">
+
+        <div class="row mb-3 justify-content-center animated fadeIn faster">
+            <div class="col">
+                <small class="form-text text-muted text-right">Este campo es Autogenerado</small>
+                <div class="card bg-danger text-white mb-3 mt-1">
+                    <div class="card-header "><strong>ID:</strong> {{ sala.id_sala }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3 justify-content-center animated fadeIn faster">
+            <div class="col">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Información de la sala</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <div class="form-group mb-2">
+                                    <label for="nombre">Teatro:</label>
+                                    <select class="custom-select" [ngModel]="selectedItem" id="id_teatro" (change)="selectTeatro($event)" name="emply" required>
+                                    <option [value]="item.id_teatro" *ngFor="let item of teatro">{{ item.nombre }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-2">
+                                    <label for="codigo_sala">Código de sala:</label>
+                                    <input type="text" class="form-control" [(ngModel)]="sala.codigo_sala" name="codigo_sala" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block"><h1 class="display-4">Guardar</h1></button>
+            </div>
+        </div>
+
+    </form>
+</div>

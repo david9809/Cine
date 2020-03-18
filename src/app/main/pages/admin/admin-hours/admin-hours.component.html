@@ -1,0 +1,30 @@
+<app-admin-header>
+</app-admin-header>
+<div class="container mt-5">
+    <h1 class="display-4">Horarios<button type="button" [routerLink]="['nuevo']" class="btn btn-warning">Nuevo</button></h1>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Horario</th>
+                <th scope="col">Teatro</th>
+                <th scope="col">Pelicula</th>
+                <th scope="col">Sala</th>
+                <th scope="col">Tools</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of horarios; let i = index">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ item.hora }}</td>
+                <td>{{ item.sala.teatro.nombre}}</td>
+                <td>{{ item.pelicula.title }}</td>
+                <td>{{ item.sala.codigo_sala }}</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm form-control" [routerLink]="[item.id_horario]">Editar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,53 @@
+<app-admin-header></app-admin-header>
+<div class="container mt-5">
+    <h1 class="display-4">Nuevo Teatro <button type="button" [routerLink]="['/admin/theater']" class="btn btn-warning">Atras</button></h1>
+    <hr>
+
+    <div class="alert alert-warning" role="alert" *ngIf="error">
+        <h3>Todos los campos son obligatorios</h3>
+    </div>
+    <form (ngSubmit)="guardar(newTheater)" #newTheater="ngForm">
+
+        <div class="row mb-3 justify-content-center animated fadeIn faster">
+            <div class="col">
+                <small class="form-text text-muted text-right">Este campo es Autogenerado</small>
+                <div class="card bg-danger text-white mb-3 mt-1">
+                    <div class="card-header "><strong>ID:</strong> {{ teatro.id_teatro }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3 justify-content-center animated fadeIn faster">
+            <div class="col">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Información del Teatro</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <div class="form-group mb-2">
+                                    <label for="nombre">Nombre:</label>
+                                    <input type="text" class="form-control" [(ngModel)]="teatro.nombre" name="nombre" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-2">
+                                    <label for="direccion">Dirección:</label>
+                                    <input type="text" class="form-control" [(ngModel)]="teatro.direccion" name="direccion" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-2">
+                                    <label for="telefono">Telefono:</label>
+                                    <input type="text" class="form-control" [(ngModel)]="teatro.telefono" name="telefono" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block"><h1 class="display-4">Guardar</h1></button>
+            </div>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,63 @@
+<app-admin-header></app-admin-header>
+<div class="container mt-5">
+    <h1 class="display-4">Nuevo Horario <button type="button" [routerLink]="['/admin/hours']" class="btn btn-warning">Atras</button></h1>
+    <hr>
+
+    <div class="alert alert-warning" role="alert" *ngIf="error">
+        <h3>Todos los campos son obligatorios</h3>
+    </div>
+    <form (ngSubmit)="guardar(newHours)" #newHours="ngForm">
+
+        <div class="row mb-3 justify-content-center animated fadeIn faster">
+            <div class="col">
+                <small class="form-text text-muted text-right">Este campo es Autogenerado</small>
+                <div class="card bg-danger text-white mb-3 mt-1">
+                    <div class="card-header "><strong>ID:</strong> {{ horario.id_horario }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3 justify-content-center animated fadeIn faster">
+            <div class="col">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Horarios</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col">
+                                <div class="form-group mb-2">
+                                    <label for="nombre">Sala:</label>
+                                    <select class="custom-select" [ngModel]="selectedItem" id="id_sala" (change)="selectSala($event)" name="emply" required>
+                                    <option [value]="item.id_sala" *ngFor="let item of sala">{{ item.codigo_sala }}</option> 
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-2">
+                                    <label for="fecha">Fecha:</label>
+                                    <input type="date" class="form-control" [(ngModel)]="horario.fecha" name="fecha" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-2">
+                                    <label for="hora">Horario:</label>
+                                    <input type="time" class="form-control" [(ngModel)]="horario.hora" name="hora" required>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group mb-2">
+                                    <label for="nombre">Pelicula:</label>
+                                    <select class="custom-select" [ngModel]="selectedItem" id="id_pelicula" (change)="selectPelicula($event)" name="emply" required>
+                                    <option [value]="i" *ngFor="let item of peliculas; let i = index">{{ i+1 }} - {{ item.title }}</option> 
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger btn-block"><h1 class="display-4">Guardar</h1></button>
+            </div>
+        </div>
+
+    </form>
+</div>

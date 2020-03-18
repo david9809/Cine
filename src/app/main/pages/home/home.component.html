@@ -1,0 +1,31 @@
+<app-banner></app-banner>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-7">
+            <label for="select">Seleccione el Teatro</label>
+            <select class="custom-select custom-select-lg">
+                <option value="1">Multiplex Titan</option>
+                <option value="2">Unicentro</option>
+                <option value="3">Plaza Central</option>
+                <option value="3">Gran Estación</option>
+                <option value="3">Embajador (Centro)</option>
+                <option value="3" selected>Plaza de las Americas</option>
+              </select>
+        </div>
+        <div class="col">
+            <label>Continuar</label>
+            <button type="button" class="btn btn-danger btn-lg  btn-block">Buscar</button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="card-deck">
+                <div class="card" style="cursor:pointer;" *ngFor="let card of cards; let i = index" [routerLink]="['/pelicula',i]">
+                    <img [src]="card.img" class="card-img-top" alt="...">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
